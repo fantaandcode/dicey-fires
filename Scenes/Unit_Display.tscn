@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Styles/Panel.tres" type="StyleBox" id=1]
+[ext_resource path="res://Scenes/Scripts/Unit_Display.gd" type="Script" id=2]
+[ext_resource path="res://Font/Terminus.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Sprites/player.png" type="Texture" id=4]
+[ext_resource path="res://Styles/Bar/Health_Fill.tres" type="StyleBox" id=5]
+[ext_resource path="res://Styles/Bar/BG.tres" type="StyleBox" id=6]
+[ext_resource path="res://Styles/Bar/Mana_Fill.tres" type="StyleBox" id=7]
+
+[node name="Unit_Display" type="PanelContainer"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 146.0
+margin_bottom = 221.0
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Info_Box" type="VBoxContainer" parent="."]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 134.0
+margin_bottom = 212.0
+alignment = 1
+
+[node name="Name" type="Label" parent="Info_Box"]
+margin_right = 128.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 0, 18 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Player"
+align = 1
+valign = 2
+
+[node name="Portrait" type="CenterContainer" parent="Info_Box"]
+margin_top = 22.0
+margin_right = 128.0
+margin_bottom = 150.0
+
+[node name="Image" type="TextureRect" parent="Info_Box/Portrait"]
+margin_right = 128.0
+margin_bottom = 128.0
+texture = ExtResource( 4 )
+
+[node name="HP" type="HBoxContainer" parent="Info_Box"]
+editor/display_folded = true
+margin_top = 154.0
+margin_right = 128.0
+margin_bottom = 178.0
+
+[node name="Label" type="Label" parent="Info_Box/HP"]
+margin_top = 2.0
+margin_right = 30.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 30, 20 )
+custom_fonts/font = ExtResource( 3 )
+text = "HP"
+align = 1
+valign = 1
+percent_visible = -0.5
+
+[node name="Bar" type="ProgressBar" parent="Info_Box/HP"]
+margin_left = 34.0
+margin_right = 128.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+custom_styles/fg = ExtResource( 5 )
+custom_styles/bg = ExtResource( 6 )
+allow_lesser = true
+percent_visible = false
+
+[node name="MP" type="HBoxContainer" parent="Info_Box"]
+editor/display_folded = true
+margin_top = 182.0
+margin_right = 128.0
+margin_bottom = 206.0
+
+[node name="Label" type="Label" parent="Info_Box/MP"]
+margin_top = 2.0
+margin_right = 30.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 30, 20 )
+custom_fonts/font = ExtResource( 3 )
+text = "MP"
+align = 1
+valign = 1
+percent_visible = -0.5
+
+[node name="Bar" type="ProgressBar" parent="Info_Box/MP"]
+margin_left = 34.0
+margin_right = 128.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+custom_styles/fg = ExtResource( 7 )
+custom_styles/bg = ExtResource( 6 )
+step = 1.0
+allow_lesser = true
+percent_visible = false

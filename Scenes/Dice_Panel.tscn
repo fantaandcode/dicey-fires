@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Styles/Panel.tres" type="StyleBox" id=1]
+[ext_resource path="res://Scenes/Scripts/Dice.gd" type="Script" id=2]
+[ext_resource path="res://Styles/Separator.tres" type="StyleBox" id=3]
+
+[node name="Dice_Panel" type="PanelContainer"]
+margin_right = 104.0
+margin_bottom = 27.0
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Dice" type="VBoxContainer" parent="."]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 98.0
+margin_bottom = 21.0
+
+[node name="Dice_Values" type="HBoxContainer" parent="Dice"]
+margin_right = 92.0
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Dice"]
+margin_top = 4.0
+margin_right = 92.0
+margin_bottom = 8.0
+custom_styles/separator = ExtResource( 3 )
+
+[node name="Roll_Info" type="HBoxContainer" parent="Dice"]
+margin_top = 12.0
+margin_right = 92.0
+margin_bottom = 12.0
+
+[node name="Roll_Button" type="TextureButton" parent="Dice/Roll_Info"]
+size_flags_vertical = 4
+
+[node name="Rolled_Display" type="GridContainer" parent="Dice/Roll_Info"]
+margin_left = 4.0
+margin_right = 4.0
+columns = 5
+[connection signal="pressed" from="Dice/Roll_Info/Roll_Button" to="." method="_on_Roll_Button_pressed"]
