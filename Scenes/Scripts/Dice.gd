@@ -3,7 +3,6 @@ extends PanelContainer
 # initialize rng and result
 var rng = RandomNumberGenerator.new()
 var result = 0
-var turn = true
 
 var dice = []
 var rolls_max = 0
@@ -12,6 +11,8 @@ var dice_rolls = []
 onready var dice_val = get_node("Dice/Dice_Values")
 onready var roll_button = get_node("Dice/Roll_Info/Roll_Button")
 onready var rolled_display = get_node("Dice/Roll_Info/Rolled_Display")
+
+signal no_rolls_left
 
 func _ready():
 	# new random every run
@@ -64,21 +65,23 @@ func set_result():
 
 # roll dice
 func roll_dice():
-	var rand = rng.randi_range(0, dice.size()-1)
-	result = dice[rand]
-	dice_rolls.append(result)
-	rolls_left -= 1
-	set_result()
+	if rolls_left > 0:
+		var rand = rng.randi_range(0, dice.size()-1)
+		result = dice[rand]
+		dice_rolls.append(result)
+		rolls_left -= 1
+		set_result()
+	else:
+		emit_signal('no_rolls_left')
 
-func reset_rolls():
+func reset_rolls_textures():
 	for i in rolled_display.get_children():
 		i.texture = get_dice_sprite(dice.size(), 0)
 
 func make_enemy_dice():
-	get_node("Dice/Roll_Info/Roll_Button").queue_free()
+	get_node("Dice/Roll_Info/Roll_Button").visible = false
 	get_node("Dice/Roll_Info/Rolled_Display").columns = dice.size()
 
 # when roll dice button is pressed
 func _on_Roll_Button_pressed():
-	if turn:
-		roll_dice()
+	roll_dice()

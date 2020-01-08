@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Unit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Styles/Panel.tres" type="StyleBox" id=3]
-[ext_resource path="res://Font/Terminus.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Styles/Font/Terminus.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/Deck.tscn" type="PackedScene" id=5]
 
-[node name="Margin" type="MarginContainer"]
+[node name="UI" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -28,17 +29,66 @@ size_flags_horizontal = 3
 ] instance=ExtResource( 2 )]
 margin_bottom = 246.0
 
-[node name="Actions" type="VBoxContainer" parent="Board"]
+[node name="Debug" type="PanelContainer" parent="Board"]
 margin_top = 250.0
+margin_right = 240.0
+margin_bottom = 289.0
+size_flags_horizontal = 0
+custom_styles/panel = ExtResource( 3 )
+
+[node name="Container" type="HBoxContainer" parent="Board/Debug"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 234.0
+margin_bottom = 33.0
+
+[node name="Debug_Label" type="Label" parent="Board/Debug/Container"]
+margin_top = 6.0
+margin_right = 48.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 4 )
+text = "DEBUG "
+
+[node name="State_Label" type="Label" parent="Board/Debug/Container"]
+margin_left = 52.0
+margin_top = 6.0
+margin_right = 116.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 4 )
+text = "X: State"
+
+[node name="VSeparator" type="VSeparator" parent="Board/Debug/Container"]
+margin_left = 120.0
+margin_right = 124.0
+margin_bottom = 27.0
+
+[node name="Button" type="Button" parent="Board/Debug/Container"]
+margin_left = 128.0
+margin_right = 228.0
+margin_bottom = 27.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
+text = "Start Fight"
+
+[node name="Notices" type="VBoxContainer" parent="Board"]
+margin_top = 293.0
 margin_right = 1004.0
-margin_bottom = 396.0
+margin_bottom = 365.0
 size_flags_vertical = 3
 alignment = 2
 
+[node name="Actions" type="HBoxContainer" parent="Board"]
+margin_top = 369.0
+margin_right = 1004.0
+margin_bottom = 396.0
+
 [node name="End_Turn" type="Button" parent="Board/Actions"]
-margin_top = 120.0
 margin_right = 120.0
-margin_bottom = 146.0
+margin_bottom = 27.0
 rect_min_size = Vector2( 120, 0 )
 size_flags_horizontal = 0
 custom_styles/hover = ExtResource( 3 )
@@ -54,117 +104,9 @@ margin_top = 400.0
 margin_right = 1004.0
 margin_bottom = 580.0
 
-[node name="Deck" type="PanelContainer" parent="Board/Hand"]
-margin_right = 120.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 120, 180 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/panel = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="Board/Hand/Deck"]
-margin_left = 6.0
-margin_top = 82.0
-margin_right = 114.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 4 )
-text = "DECK"
-align = 1
-valign = 1
-
-[node name="C_1" type="PanelContainer" parent="Board/Hand"]
-margin_left = 124.0
-margin_right = 244.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 120, 180 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/panel = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="Board/Hand/C_1"]
-margin_left = 6.0
-margin_top = 82.0
-margin_right = 114.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 4 )
-text = "CARD"
-align = 1
-valign = 1
-
-[node name="C_2" type="PanelContainer" parent="Board/Hand"]
-margin_left = 248.0
-margin_right = 368.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 120, 180 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/panel = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="Board/Hand/C_2"]
-margin_left = 6.0
-margin_top = 82.0
-margin_right = 114.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 4 )
-text = "CARD"
-align = 1
-valign = 1
-
-[node name="C_3" type="PanelContainer" parent="Board/Hand"]
-margin_left = 372.0
-margin_right = 492.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 120, 180 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/panel = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="Board/Hand/C_3"]
-margin_left = 6.0
-margin_top = 82.0
-margin_right = 114.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 4 )
-text = "CARD"
-align = 1
-valign = 1
-
-[node name="C_4" type="PanelContainer" parent="Board/Hand"]
-margin_left = 496.0
-margin_right = 616.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 120, 180 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/panel = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="Board/Hand/C_4"]
-margin_left = 6.0
-margin_top = 82.0
-margin_right = 114.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 4 )
-text = "CARD"
-align = 1
-valign = 1
-
-[node name="C_5" type="PanelContainer" parent="Board/Hand"]
-margin_left = 620.0
-margin_right = 740.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 120, 180 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_styles/panel = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="Board/Hand/C_5"]
-margin_left = 6.0
-margin_top = 82.0
-margin_right = 114.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 4 )
-text = "CARD"
-align = 1
-valign = 1
+[node name="Deck" parent="Board/Hand" instance=ExtResource( 5 )]
 [connection signal="name_changed" from="Board" to="Board/Profiles/Player" method="_on_Board_name_changed"]
+[connection signal="no_rolls_left" from="Board/Profiles/Player" to="Board" method="_on_Player_no_rolls_left"]
+[connection signal="pressed" from="Board/Debug/Container/Button" to="Board" method="_on_Button_pressed"]
 [connection signal="pressed" from="Board/Actions/End_Turn" to="Board" method="_on_End_Turn_pressed"]
+[connection signal="pressed" from="Board/Hand/Deck" to="Board" method="_on_Deck_pressed"]

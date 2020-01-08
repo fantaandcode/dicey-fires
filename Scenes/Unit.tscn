@@ -19,3 +19,4 @@ margin_bottom = 218.0
 margin_top = 222.0
 margin_right = 140.0
 margin_bottom = 246.0
+[connection signal="no_rolls_left" from="Dice_Panel" to="." method="_on_Dice_Panel_no_rolls_left"]

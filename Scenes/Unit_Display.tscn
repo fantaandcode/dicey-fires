@@ -2,11 +2,12 @@
 
 [ext_resource path="res://Styles/Panel.tres" type="StyleBox" id=1]
 [ext_resource path="res://Scenes/Scripts/Unit_Display.gd" type="Script" id=2]
-[ext_resource path="res://Font/Terminus.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Styles/Font/Terminus.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Sprites/player.png" type="Texture" id=4]
 [ext_resource path="res://Styles/Bar/Health_Fill.tres" type="StyleBox" id=5]
 [ext_resource path="res://Styles/Bar/BG.tres" type="StyleBox" id=6]
 [ext_resource path="res://Styles/Bar/Mana_Fill.tres" type="StyleBox" id=7]
+
 
 [node name="Unit_Display" type="PanelContainer"]
 margin_left = 6.0
@@ -58,7 +59,6 @@ custom_fonts/font = ExtResource( 3 )
 text = "HP"
 align = 1
 valign = 1
-percent_visible = -0.5
 
 [node name="Bar" type="ProgressBar" parent="Info_Box/HP"]
 margin_left = 34.0
@@ -86,7 +86,6 @@ custom_fonts/font = ExtResource( 3 )
 text = "MP"
 align = 1
 valign = 1
-percent_visible = -0.5
 
 [node name="Bar" type="ProgressBar" parent="Info_Box/MP"]
 margin_left = 34.0
